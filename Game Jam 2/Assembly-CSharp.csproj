@@ -55,6 +55,8 @@
      <Compile Include="Assets\Mini First Person Controller\Scripts\FirstPersonLook.cs" />
      <Compile Include="Assets\Scripts\BackAndForth.cs" />
      <Compile Include="Assets\Mini First Person Controller\Scripts\Components\Crouch.cs" />
+     <Compile Include="Assets\Scripts\DeathPlane.cs" />
+     <Compile Include="Assets\Scripts\GhostMove.cs" />
      <Compile Include="Assets\Mini First Person Controller\Scripts\Components\GroundCheck.cs" />
      <None Include="Assets\Day-Night Skyboxes\readme.txt" />
      <None Include="Assets\Low Poly Graveyard\Materials\vertexcolorsstandard.shader" />
