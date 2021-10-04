@@ -55,6 +55,9 @@
      <Compile Include="Assets\Mini First Person Controller\Scripts\FirstPersonLook.cs" />
      <Compile Include="Assets\Scripts\BackAndForth.cs" />
      <Compile Include="Assets\Mini First Person Controller\Scripts\Components\Crouch.cs" />
+     <Compile Include="Assets\Scripts\ZombieMove.cs" />
+     <Compile Include="Assets\Scripts\SkeletonMove.cs" />
+     <Compile Include="Assets\Scripts\DeathByEnemy.cs" />
      <Compile Include="Assets\Scripts\DeathPlane.cs" />
      <Compile Include="Assets\Scripts\GhostMove.cs" />
      <Compile Include="Assets\Mini First Person Controller\Scripts\Components\GroundCheck.cs" />
