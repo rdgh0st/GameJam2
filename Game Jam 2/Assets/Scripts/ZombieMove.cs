@@ -26,7 +26,7 @@ public class ZombieMove : MonoBehaviour
             zombie.destination = player.transform.position;
             timer = 0f;
         }
-        if (groanTimer >= 5f)
+        if (groanTimer >= 5f && groan != null)
         {
             groan.Play();
             groanTimer = 0f;

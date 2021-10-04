@@ -2,23 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 
 public class DeathByEnemy : MonoBehaviour
 {
+    [SerializeField] private DigitalRuby.LightningBolt.LightningBoltScript lightning;
     [SerializeField] private Camera deathCam;
     [SerializeField] private Camera fpsCam;
     [SerializeField] private FirstPersonMovement fps;
     [SerializeField] private GameObject player;
-    [SerializeField] private GameObject zombie;
-    [SerializeField] private GameObject skeleton;
+    private GameObject zombie;
+    private GameObject skeleton;
     [SerializeField] private AudioSource no;
     [SerializeField] private AudioSource thunder;
+    [SerializeField] private AudioSource haha;
     private SkeletonMove sm;
     private float timer = 0f;
     // Start is called before the first frame update
     void Start()
     {
-        sm = skeleton.GetComponent<SkeletonMove>();
     }
 
     // Update is called once per frame
@@ -26,10 +28,13 @@ public class DeathByEnemy : MonoBehaviour
     {
         if (deathCam.enabled)
         {
+            lightning.Trigger();
             timer += Time.deltaTime;
             if (timer >= 5f)
             {
                 thunder.Stop();
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+                /*
                 sm.canMove = false;
                 zombie.GetComponent<NavMeshAgent>().enabled = false;
                 zombie.transform.position = new Vector3(10.3989f, 0.75f, -6.243885f);
@@ -40,6 +45,7 @@ public class DeathByEnemy : MonoBehaviour
                 deathCam.enabled = false;
                 timer = 0f;
                 zombie.GetComponent<NavMeshAgent>().enabled = true;
+                */
             }
         }
     }
@@ -51,7 +57,14 @@ public class DeathByEnemy : MonoBehaviour
             deathCam.enabled = true;
             fpsCam.enabled = false;
             fps.enabled = false;
-            no.Play();
+            if (SceneManager.GetActiveScene().buildIndex == 0)
+            {
+                haha.Play();
+            }
+            else
+            {
+                no.Play();
+            }
             thunder.Play();
         }
     }

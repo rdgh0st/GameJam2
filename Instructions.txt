@@ -1,0 +1,15 @@
+WELCOME TO OUR GAME JAM 2!
+
+After a ghost chases you into another realm, you must escape the zombies and find the exit!
+
+Here are the controls:
+
+W - Forward
+S - Backward
+A - Left
+D - Right
+Shift - Run
+Ctrl - Crouch
+Move Mouse - Look Around
+Click and Hold - Grapple onto an item / Swing from that item
+Space - Jump
