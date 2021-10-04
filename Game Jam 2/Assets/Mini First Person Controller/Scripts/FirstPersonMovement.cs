@@ -10,6 +10,8 @@ public class FirstPersonMovement : MonoBehaviour
     public bool IsRunning { get; private set; }
     public float runSpeed = 9;
     public KeyCode runningKey = KeyCode.LeftShift;
+    public SkeletonMove sm;
+    [SerializeField] private GameObject door;
 
     Rigidbody rigidbody;
     /// <summary> Functions to override movement speed. Will use the last added override. </summary>
@@ -35,10 +37,24 @@ public class FirstPersonMovement : MonoBehaviour
             targetMovingSpeed = speedOverrides[speedOverrides.Count - 1]();
         }
 
+        if (Input.GetAxis("Horizontal") != 0)
+        {
+            Debug.Log("detected input");
+        }
+
         // Get targetVelocity from input.
         Vector2 targetVelocity =new Vector2( Input.GetAxis("Horizontal") * targetMovingSpeed, Input.GetAxis("Vertical") * targetMovingSpeed);
 
         // Apply movement.
         rigidbody.velocity = transform.rotation * new Vector3(targetVelocity.x, rigidbody.velocity.y, targetVelocity.y);
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject == door && !sm.canMove)
+        {
+            sm.canMove = true;
+        }
+    }
+
 }

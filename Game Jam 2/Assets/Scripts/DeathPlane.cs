@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class DeathPlane : MonoBehaviour
 {
     [SerializeField] private GameObject player;
@@ -37,14 +37,20 @@ public class DeathPlane : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("entered trigger");
-        playerDies = true;
-        deathCam.transform.position = new Vector3(player.transform.position.x, deathCam.transform.position.y, player.transform.position.z);
-        deathCam.enabled = true;
-        fpsCam.enabled = false;
-        scream.Play();
-        startTime = Time.deltaTime;
-        timer = 0;
+        if (other.gameObject.layer == 4)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
+        else
+        {
+            playerDies = true;
+            deathCam.transform.position = new Vector3(player.transform.position.x, deathCam.transform.position.y, player.transform.position.z);
+            deathCam.enabled = true;
+            fpsCam.enabled = false;
+            scream.Play();
+            startTime = Time.deltaTime;
+            timer = 0;
+        }
     }
 
 }
